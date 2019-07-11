@@ -2,6 +2,4 @@
 
 run project
 
-$ npm i
-$ npm run server
-$ npm run start
+$ npm i       $ npm run server        $ npm run start

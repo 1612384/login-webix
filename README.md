@@ -2,6 +2,6 @@
 
 run project
 
-npm i
-npm run server
-npm r
+$ npm i
+$ npm run server
+$ npm run start

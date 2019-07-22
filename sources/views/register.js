@@ -2,15 +2,18 @@ import {JetView} from "webix-jet";
 function signin(form,ui){
 	if (form.validate()){
 		var values = form.getValues();
-		webix.ajax().get("http://localhost:3000/email", values.email).then(function(data){
-			if(data.text()!="null"){
+		webix.ajax().get("http://localhost:8080/email", values.email).then(function(data){
+			if(data.text().trim()!="null"){
 				webix.message("Email existed", "error");
 			}
 			else{
 				if(values.pass == values.repass){
-					webix.ajax().post("http://localhost:3000/user", values);
-					webix.message("Saved user!", "success");
-					ui.show("/login")
+					webix.ajax().post("http://localhost:8080/users", values).then(function(data){
+						if(data.text().trim()=="OK"){
+							webix.message("Saved user!", "success");
+							ui.show("/login")
+						}
+					})
 				}else{
 					webix.message("Pass and re-pass not match", "error");
 				}

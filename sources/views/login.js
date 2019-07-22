@@ -2,8 +2,8 @@ import {JetView} from "webix-jet";
 function login(form,ui){
 	if (form.validate()){
 		var values = form.getValues();
-		webix.ajax().get("http://localhost:3000/login", values).then(function(data){
-			if(data.text()!="{}"){
+		webix.ajax().get("http://localhost:8080/login", values).then(function(data){
+			if(data.text().trim() == "OK"){
 				webix.message("Login success", "success");
 				ui.show("/dashboard");
 			}

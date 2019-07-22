@@ -4,6 +4,6 @@ run project
 
 $ npm i
 
-$ npm run server
+start server(openresty) at folder server
 
 $ npm run start

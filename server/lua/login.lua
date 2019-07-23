@@ -27,12 +27,13 @@ if method == "GET" then
 end
 data = data:gsub("%%40", "@")
 data = split(data,"&")
+local resultD, err = red:hmget("null","pass")
 local result, err = red:hmget(split(data[1],"=")[2],"pass")
 if not result then
     ngx.say("Error: ", err)
     return
 else
-    if result == 'null' then
+    if result[1] == resultD[1] then
         ngx.say("NOPE")
         return
     else

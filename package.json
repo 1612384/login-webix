@@ -9,7 +9,11 @@
     "build": "webpack --env.production true",
     "module": "webpack --env.production true --env.module true",
     "standalone": "webpack --env.production true --env.module true --env.standalone true",
-    "start": "webpack-dev-server --open"
+    "client": "webpack-dev-server --open",
+    "server": "killall nginx;cd server;PATH=/usr/local/openresty/nginx/sbin:$PATH;export PATH;nginx -p `pwd`/ -c conf/nginx.conf;cd ..",
+    "redis": "~/redis-5.0.5/src/redis-server",
+    "prometheus":"sudo systemctl start prometheus",
+    "start": "npm run server;npm run client"
   },
   "keywords": [
     "webix",
@@ -34,16 +38,6 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "^4.16.4",
-    "hbs": "~4.0.4",
-    "http-errors": "~1.6.3",
-    "mongoose": "^5.6.4",
-    "morgan": "~1.9.1",
-    "node-fetch": "^2.6.0",
-    "redis": "^2.8.0",
     "webix-jet": "^1.6.1"
   }
 }
